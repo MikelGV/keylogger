@@ -25,7 +25,7 @@ var keyMap = map[uint16]string{
     12: "-",
     13: "=",
     14: "BACKSPACE",
-    15: "tab",
+    15: "TAB",
     16: "q",
     17: "w",
     18: "e",
@@ -39,7 +39,7 @@ var keyMap = map[uint16]string{
     26: "[",
     27: "]",
     28: "ENTER",
-    29: "BLOCK_MAYUS",
+    29: "CAPS_LOCK",
     30: "a",
     31: "s",
     32: "d",
@@ -52,7 +52,22 @@ var keyMap = map[uint16]string{
     39: "l",
     40: ";",
     41: "'",
-    42: "SHIFT",
+    42: "R_SHIFT",
+    43: "z",
+    44: "x",
+    45: "c",
+    46: "v",
+    47: "b",
+    48: "n",
+    49: "m",
+    50: ",",
+    51: ".",
+    52: "/",
+    53: "L_SHIFT",
+    54: "R_CTRL",
+    55: "R_ALT",
+    56: "SPACE",
+    57: "L_CTRL",
 }
 
 type device []string
@@ -66,6 +81,9 @@ func (d *device) hasDevice(s string) bool{
     }
     return false
 }
+
+
+func Read() {}
 
 
 func main() {
