@@ -11,6 +11,7 @@ type KeyLogger struct {
    fd *os.File
 }
 
+// Keyboard map
 var keyMap = map[uint16]string{
     1: "ESC",
     2: "1",
