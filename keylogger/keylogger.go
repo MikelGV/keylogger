@@ -113,3 +113,5 @@ func FindKeyBoard() string {
     return ""
 }
 
+func DetectTyping() {}
+
